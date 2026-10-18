@@ -9,85 +9,215 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: radial-gradient(circle at top, #fff1f2 0%, #ffe4e6 45%, #fecdd3 100%); }
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at top, #fff1f2 0%, #ffe4e6 45%, #fecdd3 100%);
+    }
     .font-serif { font-family: 'Playfair Display', serif; }
     .font-handwriting { font-family: 'Dancing Script', cursive; }
-    .floating-heart { position: fixed; pointer-events: none; z-index: 0; animation: floatUp 6s linear infinite; }
-    @keyframes floatUp { 0% { transform: translateY(105vh) scale(0.6); opacity: 0; } 20% { opacity: 0.7; } 80% { opacity: 0.7; } 100% { transform: translateY(-10vh) scale(1.1); opacity: 0; } }
-    .card-glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); }
+    
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(105vh) scale(0.6); opacity: 0; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+    }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 p-4 pb-14 flex flex-col items-center justify-center relative overflow-x-hidden">
+
+  <!-- Vùng trái tim/hoa bay nền -->
   <div id="heart-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+
+  <!-- Container chính -->
   <div class="w-full max-w-sm sm:max-w-md pt-4 text-center relative z-10">
+    
+    <!-- Huy hiệu & Lời chúc -->
     <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-rose-100/90 border border-rose-200 text-rose-700 rounded-full text-xs font-semibold tracking-wider uppercase mb-3 shadow-sm">
-      <span>🌹</span><span>Đặc Quyền 20-10</span><span>✨</span>
+      <span>🌹</span>
+      <span>Đặc Quyền 20-10</span>
+      <span>✨</span>
     </div>
+    
     <h1 class="font-serif text-3xl sm:text-4xl font-bold text-rose-950 mb-1">Tấm Vé Bình Yên</h1>
     <p class="font-handwriting text-2xl text-rose-600 mb-2 font-bold">Dành riêng tặng Vợ Yêu</p>
+    
     <p class="text-xs sm:text-sm text-slate-600 mb-5 italic px-3 leading-relaxed">
       "Món quà 0 đồng nhưng 100% tình cảm và sự quan tâm. Khi nào mệt mỏi hay cần chồng hỗ trợ, em cứ bấm nút kích hoạt nhé!"
     </p>
+
+    <!-- Bộ đếm đã kích hoạt -->
     <div class="mb-5 text-xs text-rose-700 bg-white/70 border border-rose-200 rounded-xl py-1.5 px-3.5 inline-block font-medium shadow-sm">
       💌 Đã kích hoạt: <span id="count" class="font-bold text-rose-900">0</span>/4 đặc quyền
     </div>
+
+    <!-- Danh sách 4 Voucher tình cảm -->
     <div class="space-y-3 text-left">
-      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-center justify-between gap-2.5">
+      
+      <!-- Voucher 1 -->
+      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition flex items-center justify-between gap-2.5">
         <div class="flex items-start gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg shrink-0 mt-0.5">💆‍♀️</div>
+          <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg shrink-0 mt-0.5">
+            💆‍♀️
+          </div>
           <div>
             <span class="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Đặc quyền 01</span>
             <h3 class="font-bold text-sm text-slate-800">Spa vai gáy 30 phút</h3>
             <p class="text-xs text-slate-500 mt-0.5">Xoa bóp thư giãn, giãn cơ cổ lưng sau ngày dài làm việc mỏi mệt.</p>
           </div>
         </div>
-        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold rounded-xl shadow-sm shrink-0">Dùng thẻ</button>
+        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold rounded-xl shadow-sm transition active:scale-95 shrink-0 whitespace-nowrap">
+          Dùng thẻ
+        </button>
       </div>
-      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-center justify-between gap-2.5">
+
+      <!-- Voucher 2 -->
+      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition flex items-center justify-between gap-2.5">
         <div class="flex items-start gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg shrink-0 mt-0.5">🧹</div>
+          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg shrink-0 mt-0.5">
+            🧹
+          </div>
           <div>
             <span class="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Đặc quyền 02</span>
             <h3 class="font-bold text-sm text-slate-800">Chồng trực nhật việc nhà</h3>
             <p class="text-xs text-slate-500 mt-0.5">Quét dọn, phơi đồ, rửa bát nguyên 1 ngày không cần vợ nhắc một lời.</p>
           </div>
         </div>
-        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold rounded-xl shadow-sm shrink-0">Dùng thẻ</button>
+        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold rounded-xl shadow-sm transition active:scale-95 shrink-0 whitespace-nowrap">
+          Dùng thẻ
+        </button>
       </div>
-      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-center justify-between gap-2.5">
+
+      <!-- Voucher 3 -->
+      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition flex items-center justify-between gap-2.5">
         <div class="flex items-start gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg shrink-0 mt-0.5">🍵</div>
+          <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg shrink-0 mt-0.5">
+            🍵
+          </div>
           <div>
             <span class="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Đặc quyền 03</span>
-            <h3 class="font-bold text-sm text-slate-800">Người lắng nghe kiên nhẫn</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Một buổi tối pha trà, nghe vợ xả stress; không cãi lại, chỉ lắng nghe và ôm.</p>
+            <h3 class="font-bold text-sm text-slate-800">Luôn lắng nghe lâu lâu mới hiểu </h3>
+            <p class="text-xs text-slate-500 mt-0.5">Một buổi tối pha trà cho vợ uống, nghe vợ xả stress; không cãi lại, chỉ lắng nghe và thấu hiểu.</p>
           </div>
         </div>
-        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold rounded-xl shadow-sm shrink-0">Dùng thẻ</button>
+        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold rounded-xl shadow-sm transition active:scale-95 shrink-0 whitespace-nowrap">
+          Dùng thẻ
+        </button>
       </div>
-      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-center justify-between gap-2.5">
+
+      <!-- Voucher 4 -->
+      <div class="card-glass p-3.5 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition flex items-center justify-between gap-2.5">
         <div class="flex items-start gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg shrink-0 mt-0.5">🫂</div>
+          <div class="w-9 h-9 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg shrink-0 mt-0.5">
+            🫂
+          </div>
           <div>
             <span class="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Đặc quyền 04</span>
-            <h3 class="font-bold text-sm text-slate-800">Cái ôm sạc đầy yêu thương</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Bất cứ lúc nào thấy yếu lòng, được ôm trọn vẹn cho tới khi bình yên trở lại.</p>
+            <h3 class="font-bold text-sm text-slate-800">Cái ôm sạc đầy pin</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Bất cứ lúc nào thấy cần ôm, được ôm trọn vẹn cho tới khi bình yên trở lại.</p>
           </div>
         </div>
-        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold rounded-xl shadow-sm shrink-0">Dùng thẻ</button>
+        <button onclick="activate(this)" class="action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold rounded-xl shadow-sm transition active:scale-95 shrink-0 whitespace-nowrap">
+          Dùng thẻ
+        </button>
       </div>
     </div>
+
+    <!-- Điều khoản đáng yêu -->
     <div class="mt-6 p-4 card-glass rounded-2xl border border-dashed border-rose-300 shadow-sm text-center">
       <div class="text-xl mb-1">📜</div>
       <p class="text-xs text-rose-900 leading-relaxed font-medium">
-        <strong>Điều khoản:</strong> Thẻ có hạn sử dụng trọn đời,cấp phát độc quyền cho Vợ và không có giá trị quy đổi thành tiền mặt ❤️
+        <strong>Điều khoản:</strong> Thẻ có hạn sử dụng trọn đời, cấp phát độc quyền cho Vợ và không có giá trị quy đổi thành tiền mặt ❤️
       </p>
     </div>
+
+    <!-- Nút làm mới thẻ phòng khi muốn dùng lại -->
+    <div class="mt-4 text-center">
+      <button onclick="resetCoupons()" class="text-[11px] text-slate-400 hover:text-rose-600 underline transition">
+        Làm mới lại tất cả đặc quyền
+      </button>
+    </div>
   </div>
+
   <script>
     let activatedCount = 0;
     const STORAGE_KEY = 'coupons_2010_state';
+    let audioCtx = null;
+
+    // Hàm phát âm thanh Ting Ting / Pop dễ thương
+    function playChimeSound() {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const now = audioCtx.currentTime;
+        // Nốt nhạc 1 (cao ngọt ngào)
+        const osc1 = audioCtx.createOscillator();
+        const gain1 = audioCtx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(587.33, now); // D5
+        osc1.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
+        gain1.gain.setValueAtTime(0.25, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc1.connect(gain1);
+        gain1.connect(audioCtx.destination);
+        osc1.start(now);
+        osc1.stop(now + 0.35);
+
+        // Nốt nhạc 2 (chúc mừng lung linh)
+        const osc2 = audioCtx.createOscillator();
+        const gain2 = audioCtx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(1174.66, now + 0.1); // D6
+        gain2.gain.setValueAtTime(0.2, now + 0.1);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+        osc2.connect(gain2);
+        gain2.connect(audioCtx.destination);
+        osc2.start(now + 0.1);
+        osc2.stop(now + 0.5);
+      } catch (e) {
+        console.log("Audio not supported", e);
+      }
+    }
+
+    // Âm thanh đặc biệt khi kích hoạt hết 4 thẻ
+    function playVictoryFanfare() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C - E - G - C
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const startTime = audioCtx.currentTime + (idx * 0.12);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, startTime);
+          gain.gain.setValueAtTime(0.25, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.4);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 0.4);
+        });
+      } catch (e) {}
+    }
+
+    // Hiệu ứng cánh hoa / trái tim bay
     function createFloatingHearts() {
       const container = document.getElementById('heart-container');
       const icons = ['🌸', '💖', '💕', '✨', '🌷'];
@@ -104,15 +234,78 @@
       }, 800);
     }
     createFloatingHearts();
+
+    function updateCounterDisplay() {
+      document.getElementById('count').innerText = activatedCount;
+      if (activatedCount === 4) {
+        setTimeout(playVictoryFanfare, 300);
+        confetti({ particleCount: 130, spread: 80, origin: { y: 0.6 } });
+      }
+    }
+
     function activate(btn) {
-      confetti({ particleCount: 65, spread: 55, origin: { y: 0.7 }, colors: ['#f43f5e', '#fb7185', '#fda4af', '#f59e0b'] });
+      // 1. Phát âm thanh
+      playChimeSound();
+
+      // 2. Bắn pháo hoa
+      confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.7 },
+        colors: ['#f43f5e', '#fb7185', '#fda4af', '#f59e0b', '#34d399']
+      });
+
+      // 3. Đổi trạng thái nút
       btn.innerHTML = "Đã nhận lệnh ✓";
       btn.className = "px-3 py-2 bg-emerald-500 text-white text-xs font-semibold rounded-xl shrink-0 cursor-default shadow-sm";
       btn.disabled = true;
+
       activatedCount++;
-      document.getElementById('count').innerText = activatedCount;
-      if (activatedCount === 4) confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      updateCounterDisplay();
+      saveState();
     }
+
+    function saveState() {
+      const states = [];
+      document.querySelectorAll('.action-btn').forEach(btn => states.push(btn.disabled));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ count: activatedCount, states }));
+    }
+
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          activatedCount = data.count || 0;
+          const buttons = document.querySelectorAll('.action-btn');
+          if (data.states && data.states.length === buttons.length) {
+            data.states.forEach((isDisabled, idx) => {
+              if (isDisabled) {
+                buttons[idx].innerHTML = "Đã nhận lệnh ✓";
+                buttons[idx].className = "px-3 py-2 bg-emerald-500 text-white text-xs font-semibold rounded-xl shrink-0 cursor-default shadow-sm";
+                buttons[idx].disabled = true;
+              }
+            });
+          }
+          document.getElementById('count').innerText = activatedCount;
+        } catch (e) {}
+      }
+    }
+
+    function resetCoupons() {
+      if (confirm("Vợ có muốn làm mới lại tất cả các thẻ đặc quyền không?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        activatedCount = 0;
+        document.querySelectorAll('.action-btn').forEach(btn => {
+          btn.innerHTML = "Dùng thẻ";
+          btn.className = "action-btn px-3 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-xs font-semibold rounded-xl shadow-sm transition active:scale-95 shrink-0 whitespace-nowrap";
+          btn.disabled = false;
+        });
+        document.getElementById('count').innerText = 0;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadState);
   </script>
 </body>
 </html>
